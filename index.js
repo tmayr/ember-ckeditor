@@ -13,15 +13,22 @@ module.exports = {
 
   contentFor: function(type, config) {
     if (type === 'vendor-prefix') {
-      return "window.CKEDITOR_BASEPATH = '/assets/ckeditor/';";
+      return "window.CKEDITOR_BASEPATH = '" + (config.CKEDITOR_BASEPATH || '/') + "assets/ckeditor/';";
     }
   },
 
   treeForPublic: function(tree) {
     return new Funnel(this.project.bowerDirectory + '/ckeditor', {
-      srcDir: '/',
-      // include: ['**/*.woff', '**/stylesheet.css'],
-      destDir: '/assets/ckeditor'
+        srcDir: '/',
+        include: [
+          'ckeditor.js',
+          'styles.js',
+          'config.js',
+          'lang/en.js',
+          'contents.css',
+          'skins/moono/*'
+        ],
+        destDir: '/assets/ckeditor'
     });
   }
 };
