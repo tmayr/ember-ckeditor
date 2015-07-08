@@ -26,7 +26,8 @@ module.exports = {
           'config.js',
           'lang/en.js',
           'contents.css',
-          'skins/moono/*'
+          'skins/moono/**/*',
+          'plugins/{dialog,image,link}/**/*',
         ],
         destDir: '/assets/ckeditor'
     });
